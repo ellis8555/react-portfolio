@@ -1,4 +1,4 @@
-import BodyContainer from "../../utils/bodyContainer";
+import BodyContainer from "../../utils/BodyContainer";
 
 function SignUpContent() {
   return <p className="h4 text-warning">Under construction</p>;
