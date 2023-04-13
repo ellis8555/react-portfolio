@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./src/images/backgrounds/port-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+#root {
+  background-color: rgba(0, 0, 0, 0.75);
+  background-size: auto;
+  min-height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.h1 {
+  @apply text-4xl text-center;
+}
+
+.h4 {
+  @apply text-xl text-center;
+}
+
+.h6 {
+  @apply text-lg text-center;
+}
+
+.primary-container-25 {
+  @apply mt-10 bg-primary-25 flex justify-center sm:rounded-md sm:mx-6 md:mx-10 lg:mx-12;
+}
