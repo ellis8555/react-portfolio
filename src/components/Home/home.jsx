@@ -1,6 +1,6 @@
-import BodyContainer from "../../utils/bodyContainer";
+import BodyContainer from "../../utils/BodyContainer";
 import Construction from "../Construction/Construction";
-import HomeMessagePoints from "../Home/Home-components/HomeMessagePoints";
+import HomeMessagePoints from "./Home-components/HomeMessagePoints";
 import Certificates from "./Home-components/Certificates";
 
 function Home() {
