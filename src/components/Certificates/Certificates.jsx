@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import RightArrow from "../Svg/Certificates/RightArrow";
-import LeftArrow from "../Svg/Certificates/LeftArrow";
+import RightArrow from "./Certificate-svgs/RightArrow";
+import LeftArrow from "./Certificate-svgs/LeftArrow";
 import slideRight from "./Certificate-methods/slideRight";
 import slideLeft from "./Certificate-methods/slideLeft";
 import useWYWMImages from "../../hooks/useWYWMImages";
@@ -18,10 +18,10 @@ function Certificates() {
   }, []);
 
   const setSliderArguments = {
-    image: image,
-    imageCount: imageCount,
-    currentIndex: currentIndex,
-    setImageIndex: setImageIndex,
+    image,
+    imageCount,
+    currentIndex,
+    setImageIndex,
   };
 
   return (
