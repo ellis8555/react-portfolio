@@ -1,19 +1,17 @@
-import reactImg from "../../public/images/hobbies/web-dev/react.png";
-
 function useProjectLogos() {
   const projectImages = {
     reactVersionImgs: {
       images: [
         {
-          src: "../../public/images/hobbies/web-dev/react.png",
+          src: "/images/hobbies/web-dev/react.png",
           alt: "react",
         },
         {
-          src: "./images/hobbies/web-dev/javascript.png",
+          src: "/images/hobbies/web-dev/javascript.png",
           alt: "javascript",
         },
         {
-          src: "./images/hobbies/web-dev/tailwind.png",
+          src: "/images/hobbies/web-dev/tailwind.png",
           alt: "tailwind",
         },
       ],
@@ -24,15 +22,15 @@ function useProjectLogos() {
     vanillaVersionImgs: {
       images: [
         {
-          src: "./images/hobbies/web-dev/javascript.png",
+          src: "/images/hobbies/web-dev/javascript.png",
           alt: "javascript",
         },
         {
-          src: "./images/hobbies/web-dev/webpack.png",
+          src: "/images/hobbies/web-dev/webpack.png",
           alt: "webpack",
         },
         {
-          src: "./images/hobbies/web-dev/bootstrap.png",
+          src: "/images/hobbies/web-dev/bootstrap.png",
           alt: "bootstrap",
         },
       ],
@@ -43,15 +41,15 @@ function useProjectLogos() {
     backEndImgs: {
       images: [
         {
-          src: "./images/hobbies/web-dev/express.png",
+          src: "/images/hobbies/web-dev/express.png",
           alt: "express",
         },
         {
-          src: "./images/hobbies/web-dev/mongoDB.png",
+          src: "/images/hobbies/web-dev/mongoDB.png",
           alt: "mongoDB",
         },
         {
-          src: "./images/hobbies/web-dev/jwt.jpg",
+          src: "/images/hobbies/web-dev/jwt.jpg",
           alt: "jwt",
         },
       ],
