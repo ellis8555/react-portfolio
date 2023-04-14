@@ -6,7 +6,7 @@ function Hamburger({ expandMenu }) {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-12 h-12 text-info-75 sm:hidden absolute ml-3 cursor-pointer hover:text-info-50"
+      className="w-8 h-8 text-info-75 sm:hidden absolute ml-3 mt-3 cursor-pointer hover:text-info-50"
       onClick={expandMenu}
     >
       <path
