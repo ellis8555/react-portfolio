@@ -6,7 +6,7 @@ const projectImages = useProjectImages();
 function Construction() {
   return (
     <div className="w-full bg-construction-25 text-center my-6 pb-6 overflow-hidden md:mx-8 md:rounded-md">
-      <p className="py-6 h4 text-underConstructionTextColor">
+      <p className="py-6 h2 text-underConstructionTextColor">
         This react version is currently under construction
       </p>
       <a
