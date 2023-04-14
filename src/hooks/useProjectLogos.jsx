@@ -1,9 +1,11 @@
+import reactImg from "../../public/images/hobbies/web-dev/react.png";
+
 function useProjectLogos() {
   const projectImages = {
     reactVersionImgs: {
       images: [
         {
-          src: "./images/hobbies/web-dev/react.png",
+          src: "../../public/images/hobbies/web-dev/react.png",
           alt: "react",
         },
         {
