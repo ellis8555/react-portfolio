@@ -16,7 +16,8 @@ export default {
         warning: "hsl(45, 100%, 51%)",
         // info
         info: "hsl(190, 90%, 50%)",
-        "info-25": "hsl(190, 90%, 50%, .5)",
+        "info-50": "hsl(190, 90%, 50%, .5)",
+        "info-75": "hsl(190, 90%, 50%, .75)",
         // black
         "black-75": "hsla(0, 0%, 0%, 0.75)",
         // contstruction
