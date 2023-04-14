@@ -3,15 +3,15 @@ function useProjectLogos() {
     reactVersionImgs: {
       images: [
         {
-          src: "./src/images/hobbies/web-dev/react.png",
+          src: "./images/hobbies/web-dev/react.png",
           alt: "react",
         },
         {
-          src: "./src/images/hobbies/web-dev/javascript.png",
+          src: "./images/hobbies/web-dev/javascript.png",
           alt: "javascript",
         },
         {
-          src: "./src/images/hobbies/web-dev/tailwind.png",
+          src: "./images/hobbies/web-dev/tailwind.png",
           alt: "tailwind",
         },
       ],
@@ -22,15 +22,15 @@ function useProjectLogos() {
     vanillaVersionImgs: {
       images: [
         {
-          src: "./src/images/hobbies/web-dev/javascript.png",
+          src: "./images/hobbies/web-dev/javascript.png",
           alt: "javascript",
         },
         {
-          src: "./src/images/hobbies/web-dev/webpack.png",
+          src: "./images/hobbies/web-dev/webpack.png",
           alt: "webpack",
         },
         {
-          src: "./src/images/hobbies/web-dev/bootstrap.png",
+          src: "./images/hobbies/web-dev/bootstrap.png",
           alt: "bootstrap",
         },
       ],
@@ -41,15 +41,15 @@ function useProjectLogos() {
     backEndImgs: {
       images: [
         {
-          src: "./src/images/hobbies/web-dev/express.png",
+          src: "./images/hobbies/web-dev/express.png",
           alt: "express",
         },
         {
-          src: "./src/images/hobbies/web-dev/mongoDB.png",
+          src: "./images/hobbies/web-dev/mongoDB.png",
           alt: "mongoDB",
         },
         {
-          src: "./src/images/hobbies/web-dev/jwt.jpg",
+          src: "./images/hobbies/web-dev/jwt.jpg",
           alt: "jwt",
         },
       ],
