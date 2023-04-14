@@ -11,7 +11,7 @@ function Construction() {
       </p>
       <a
         href="https://ellis8555.github.io/CertificatesOnGit"
-        className="py-3 h6 text-white bg-info-25 rounded-md px-4"
+        className="py-3 h6 text-white bg-info-75 rounded-md px-4"
       >
         Fully functional vanilla version here
       </a>
