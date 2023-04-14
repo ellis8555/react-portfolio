@@ -11,7 +11,9 @@ function Home() {
         contentComponent={<Construction />}
       />
       <BodyContainer contentComponent={<HomeMessagePoints />} />
-      <Certificates />
+      <div className="flex justify-center">
+        <Certificates />
+      </div>
     </>
   );
 }
