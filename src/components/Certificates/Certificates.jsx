@@ -26,10 +26,10 @@ function Certificates() {
 
   return (
     <div className="overflow-x-hidden relative w-[35rem] lg:w-[50rem] mx-auto">
-      <div className="absolute top-[50%] right-24 text-yellow-600 z-10 hover:cursor-pointer hover:text-info md:right-10 lg:right-32 md:text-info md:hover:text-blue-500">
+      <div className="absolute top-[50%] right-14 text-yellow-600 z-10 hover:cursor-pointer hover:text-info md:right-10 lg:right-32 md:text-info md:hover:text-blue-500">
         <RightArrow slideRight={() => slideRight(setSliderArguments)} />
       </div>
-      <div className="absolute top-[50%] left-24 z-10 text-yellow-600 hover:cursor-pointer hover:text-info md:left-10 lg:left-32 md:text-info md:hover:text-blue-500">
+      <div className="absolute top-[50%] left-14 z-10 text-yellow-600 hover:cursor-pointer hover:text-info md:left-10 lg:left-32 md:text-info md:hover:text-blue-500">
         <LeftArrow slideLeft={() => slideLeft(setSliderArguments)} />
       </div>
       <p className="h1 py-6">Certificates</p>
