@@ -1,7 +1,7 @@
 import BodyContainer from "../../utils/BodyContainer";
 import Construction from "../Construction/Construction";
 import HomeMessagePoints from "./Home-components/HomeMessagePoints";
-import Certificates from "./Home-components/Certificates";
+import Certificates from "../Certificates/Certificates";
 
 function Home() {
   return (
