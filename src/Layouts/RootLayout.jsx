@@ -31,7 +31,7 @@ function RootLayout() {
       <Hamburger expandMenu={expandMenu} />
       <header
         ref={header}
-        className="h-0 opacity-0 transition-opacity duration-500 flex justify-center sm:opacity-100 sm:h-full sm:mx-6 md:mx-10 lg:mx-12"
+        className="h-0 opacity-0 transition-opacity duration-500 flex justify-center sm:opacity-100 sm:h-full sm:sticky sm:top-0 sm:mx-6 md:mx-10 lg:mx-12"
       >
         <nav className="overflow-hidden bg-primary-25 w-full flex flex-col sm:h-full sm:rounded-md sm:flex-row sm:justify-between">
           <LeftNav links={links} />
