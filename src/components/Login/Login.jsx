@@ -5,7 +5,11 @@ function LoginContent() {
 }
 
 function Login() {
-  return <BodyContainer title="Login" contentComponent={<LoginContent />} />;
+  return (
+    <BodyContainer title="Login">
+      <LoginContent />
+    </BodyContainer>
+  );
 }
 
 export default Login;

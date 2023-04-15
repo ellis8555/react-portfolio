@@ -6,7 +6,9 @@ function ContactContent() {
 
 function Contact() {
   return (
-    <BodyContainer title="Contact Me" contentComponent={<ContactContent />} />
+    <BodyContainer title="Contact Me">
+      <ContactContent />
+    </BodyContainer>
   );
 }
 

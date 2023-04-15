@@ -5,7 +5,11 @@ function SignUpContent() {
 }
 
 function SignUp() {
-  return <BodyContainer title="Sign up" contentComponent={<SignUpContent />} />;
+  return (
+    <BodyContainer title="Sign up">
+      <SignUpContent />
+    </BodyContainer>
+  );
 }
 
 export default SignUp;

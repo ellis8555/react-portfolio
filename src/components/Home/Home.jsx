@@ -6,11 +6,12 @@ import Certificates from "../Certificates/Certificates";
 function Home() {
   return (
     <>
-      <BodyContainer
-        title="My React Portfolio"
-        contentComponent={<Construction />}
-      />
-      <BodyContainer contentComponent={<HomeMessagePoints />} />
+      <BodyContainer title="My React Portfolio">
+        <Construction />
+      </BodyContainer>
+      <BodyContainer>
+        <HomeMessagePoints />
+      </BodyContainer>
       <div className="flex justify-center">
         <Certificates />
       </div>
