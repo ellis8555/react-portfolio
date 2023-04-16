@@ -18,6 +18,7 @@ export default {
         info: "hsl(190, 90%, 50%)",
         "info-50": "hsl(190, 90%, 50%, .5)",
         "info-75": "hsl(190, 90%, 50%, .75)",
+        "info-90": "hsl(190, 90%, 50%, .9)",
         // black
         "black-75": "hsla(0, 0%, 0%, 0.75)",
         // contstruction
