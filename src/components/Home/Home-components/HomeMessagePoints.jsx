@@ -1,7 +1,9 @@
 function HomeMessagePoints() {
   const listItems = [
-    "Currently working on this React version of this project",
     "This version is using tailwind css for styling",
+    "Any animations are original using javascript",
+    "Resize observer keeps proper navbar size upon resize from mobile to larger screens",
+    "Intersection observer upcoming for more animations",
     "This project shares the same back-end as the vanilla version of this project",
   ];
 
