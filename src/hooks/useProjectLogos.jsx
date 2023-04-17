@@ -15,7 +15,7 @@ function useProjectLogos() {
           alt: "tailwind",
         },
       ],
-      href: "",
+      href: "https://github.com/ellis8555/react-portfolio",
       title: "This projects github",
       end: "Front-end",
     },
