@@ -1,5 +1,6 @@
 function HomeMessagePoints() {
   const listItems = [
+    "Vite react project",
     "This version is using tailwind css for styling",
     "Any animations are original using javascript",
     "Resize observer keeps proper navbar size upon resize from mobile to larger screens",
