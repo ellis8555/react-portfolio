@@ -22,6 +22,12 @@ body {
   padding-bottom: 1rem;
 }
 
+#linkedinLink:before {
+  position: absolute;
+  content: url(/public/images/about-me/linkedin-logo.png);
+  transform: scale(1.25) translate(-2rem, 0);
+}
+
 .h1 {
   @apply text-4xl text-center;
 }
@@ -40,4 +46,8 @@ body {
 
 .primary-container-25 {
   @apply mt-10 bg-primary-25 flex justify-center sm:rounded-md sm:mx-6 md:mx-10 lg:mx-12;
+}
+
+textarea::placeholder {
+  color: hsl(215, 16%, 47%);
 }
