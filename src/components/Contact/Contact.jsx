@@ -1,5 +1,6 @@
 import BodyContainer from "../../utils/BodyContainer";
-import ContactForm from "./ContactForm";
+import ContactForm from "./contact-sub-components/ContactForm";
+import Mail from "./contact-svg/Mail";
 
 function ContactContent() {
   return (
@@ -7,20 +8,7 @@ function ContactContent() {
       <div>
         <p className="relative w-fit m-auto text-info font-bold text-xl">
           <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="absolute w-6 h-6 top-[.15rem] -translate-x-10 text-white"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-              />
-            </svg>
+            <Mail />
           </span>
           lsp1@hotmail
         </p>
@@ -29,7 +17,7 @@ function ContactContent() {
         <a
           href="https://www.linkedin.com/in/lonnie-smith-4b0583208/"
           id="linkedinLink"
-          className="text-info font-bold text-xl"
+          className="text-info font-bold text-xl underline"
         >
           My Linkedin
         </a>
