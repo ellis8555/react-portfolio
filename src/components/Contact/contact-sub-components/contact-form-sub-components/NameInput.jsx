@@ -12,11 +12,12 @@ function NameInput({ getUserName, updateUserName }) {
   const userInputRefs = {
     inputElement: nameInputRef,
     helpElement: nameHelpRef,
+    getUserName: getUserName,
   };
 
   useEffect(() => {
-    if (getUserName.length > 0) {
-      const isValid = userNameValidator(getUserName);
+    if (userInputRefs.getUserName.length > 0) {
+      const isValid = userNameValidator(userInputRefs.getUserName);
       if (isValid) {
         setValid(true);
         setSuccessColors(
@@ -46,7 +47,7 @@ function NameInput({ getUserName, updateUserName }) {
         ...Object.values(colors)
       );
     }
-  }, [getUserName]);
+  }, [userInputRefs.getUserName]);
 
   return (
     <>
@@ -58,14 +59,14 @@ function NameInput({ getUserName, updateUserName }) {
         <input
           type="text"
           id="name"
-          ref={nameInputRef}
+          ref={userInputRefs.inputElement}
           onChange={(e) => {
             updateUserName(e.target.value);
           }}
           onBlur={() => {
             onBlurZeroInput(
-              nameInputRef,
-              getUserName,
+              userInputRefs.inputElement,
+              userInputRefs.getUserName,
               "outline-0",
               "outline",
               "outline-2",
@@ -77,7 +78,7 @@ function NameInput({ getUserName, updateUserName }) {
         />
         <div
           id="nameHelp"
-          ref={nameHelpRef}
+          ref={userInputRefs.helpElement}
           name="nameHelp"
           className="text-slate-500 text-sm md:flex md:items-center"
         >
