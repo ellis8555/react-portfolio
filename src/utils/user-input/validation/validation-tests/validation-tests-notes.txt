@@ -1,0 +1,2 @@
+the methods in this folder are used in their corresponding forms validtion check
+these checks are located in ../methods/validate-<formName>-form.js
