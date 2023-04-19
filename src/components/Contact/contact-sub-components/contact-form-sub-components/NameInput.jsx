@@ -85,7 +85,7 @@ function NameInput({ getUserName, updateUserName }) {
           <p>
             {valid
               ? ""
-              : "Between 2-30 characters in length alpha only and not end with a space"}
+              : "Between 2-30 characters, alpha only with one space in between"}
           </p>
         </div>
       </div>
