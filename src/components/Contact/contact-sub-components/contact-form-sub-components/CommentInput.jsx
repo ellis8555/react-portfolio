@@ -8,7 +8,7 @@ function CommentInput() {
         <div className="w-full">
           <textarea
             id="comment"
-            className="rounded-md p-2 text-black text-lg w-full xl: w-3/4 focus:outline-blue-500"
+            className="rounded-md p-2 text-black text-lg w-full xl: w-3/4 focus:outline outline-2"
             name="comment"
             placeholder="Drop me a comment or leave some feedback"
             rows="10"
