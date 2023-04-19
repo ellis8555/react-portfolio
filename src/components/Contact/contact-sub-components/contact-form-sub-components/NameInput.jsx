@@ -9,10 +9,9 @@ function NameInput({ getUserName, updateUserName }) {
   const nameInputRef = useRef();
   const nameHelpRef = useRef();
 
-  const setUserInputColors = {
+  const userInputRefs = {
     inputElement: nameInputRef,
     helpElement: nameHelpRef,
-    colors,
   };
 
   useEffect(() => {
@@ -21,30 +20,30 @@ function NameInput({ getUserName, updateUserName }) {
       if (isValid) {
         setValid(true);
         setSuccessColors(
-          setUserInputColors.inputElement,
-          setUserInputColors.colors.OUTLINE_SUCCESS,
-          setUserInputColors.helpElement,
-          setUserInputColors.colors.TEXT_SUCCESS,
-          ...Object.values(setUserInputColors.colors)
+          userInputRefs.inputElement,
+          colors.OUTLINE_SUCCESS,
+          userInputRefs.helpElement,
+          colors.TEXT_SUCCESS,
+          ...Object.values(colors)
         );
       } else {
         setValid(false);
         setSuccessColors(
-          setUserInputColors.inputElement,
-          setUserInputColors.colors.OUTLINE_DANGER,
-          setUserInputColors.helpElement,
-          setUserInputColors.colors.TEXT_DANGER,
-          ...Object.values(setUserInputColors.colors)
+          userInputRefs.inputElement,
+          colors.OUTLINE_DANGER,
+          userInputRefs.helpElement,
+          colors.TEXT_DANGER,
+          ...Object.values(colors)
         );
       }
     } else {
       setValid(false);
       setSuccessColors(
-        setUserInputColors.inputElement,
-        setUserInputColors.colors.OUTLINE_SLATE_500,
-        setUserInputColors.helpElement,
-        setUserInputColors.colors.TEXT_SLATE_500,
-        ...Object.values(setUserInputColors.colors)
+        userInputRefs.inputElement,
+        colors.OUTLINE_UNSELECTED,
+        userInputRefs.helpElement,
+        colors.TEXT_UNSELECTED,
+        ...Object.values(colors)
       );
     }
   }, [getUserName]);
@@ -70,7 +69,7 @@ function NameInput({ getUserName, updateUserName }) {
               "outline-0",
               "outline",
               "outline-2",
-              setUserInputColors.colors.TEXT_SLATE_500
+              colors.TEXT_UNSELECTED
             );
           }}
           className="rounded-md h-10 p-2 text-black text-lg"
@@ -85,7 +84,7 @@ function NameInput({ getUserName, updateUserName }) {
           <p>
             {valid
               ? ""
-              : "Between 2-30 characters, alpha only with one space in between"}
+              : "Between 2-30 characters, alpha only with one space in between permitted"}
           </p>
         </div>
       </div>
