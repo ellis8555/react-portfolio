@@ -1,6 +1,7 @@
-import BodyContainer from "../../utils/BodyContainer";
+import BodyContainer from "../../utils/components/BodyContainer";
 import ContactForm from "./contact-sub-components/ContactForm";
 import Mail from "./contact-svg/Mail";
+import "./contact.css";
 
 function ContactContent() {
   return (
