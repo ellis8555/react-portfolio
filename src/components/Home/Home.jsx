@@ -1,4 +1,4 @@
-import BodyContainer from "../../utils/BodyContainer";
+import BodyContainer from "../../utils/components/BodyContainer";
 import Construction from "../Construction/Construction";
 import HomeMessagePoints from "./Home-components/HomeMessagePoints";
 import Certificates from "../Certificates/Certificates";
