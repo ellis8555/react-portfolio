@@ -4,7 +4,8 @@ import colors from "../../../../utils/colors";
 import CheckSvg from "./contact-form-svgs/CheckSvg";
 import useSetValidations from "../../../../hooks/useSetValidations";
 
-function NameInput({ getUserName, updateUserName }) {
+// function NameInput({ getUserName, updateUserName, updateIsNameValid }) {
+function NameInput({ getUserName, dispatchFormState }) {
   const [valid, setValid] = useState(false);
   const nameInputRef = useRef();
   const nameHelpRef = useRef();
@@ -17,7 +18,9 @@ function NameInput({ getUserName, updateUserName }) {
   };
 
   useEffect(() => {
-    useSetValidations(userInputRefs);
+    // if this user input is validated let the form submit button know if it can proceed
+    const isNameValid = useSetValidations(userInputRefs);
+    dispatchFormState({ type: "isNameValid", payload: isNameValid });
   }, [userInputRefs.getUserInput]);
 
   return (
@@ -33,7 +36,10 @@ function NameInput({ getUserName, updateUserName }) {
             id="name"
             ref={userInputRefs.inputElement}
             onChange={(e) => {
-              updateUserName(e.target.value);
+              dispatchFormState({
+                type: "updateUserName",
+                payload: e.target.value,
+              });
             }}
             onBlur={() => {
               onBlurZeroInput(
