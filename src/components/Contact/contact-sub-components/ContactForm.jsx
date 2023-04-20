@@ -1,22 +1,42 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import NameInput from "./contact-form-sub-components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
 
 function ContactForm() {
-  const [userName, setUserName] = useState("");
-  const [userComment, setUserComment] = useState("");
-
-  const updateUserName = (newName) => {
-    setUserName(newName);
+  const formStates = {
+    userName: "",
+    userComment: "",
+    isNameValid: false,
+    isCommentValid: false,
   };
 
-  const updateUserComment = (comment) => {
-    setUserComment(comment);
+  const setFormStatus = (formState, action) => {
+    switch (action.type) {
+      case "updateUserName":
+        return { ...formState, userName: action.payload };
+        break;
+      case "updateUserComment":
+        return { ...formState, userComment: action.payload };
+        break;
+      case "isNameValid":
+        return { ...formState, isNameValid: action.payload };
+        break;
+      case "isCommentValid":
+        return { ...formState, isCommentValid: action.payload };
+        break;
+      default:
+        return formState;
+    }
   };
+
+  const [formState, dispatchFormState] = useReducer(setFormStatus, formStates);
 
   const submitContactForm = (e) => {
     e.preventDefault();
-    // console.log("inside ContactForm");
+    if (!formState.isNameValid || !formState.isCommentValid) {
+      return;
+    }
+    console.log("Form has been validated!");
   };
 
   return (
@@ -25,10 +45,13 @@ function ContactForm() {
       name="contactForm"
       onSubmit={submitContactForm}
     >
-      <NameInput getUserName={userName} updateUserName={updateUserName} />
+      <NameInput
+        getUserName={formState.userName}
+        dispatchFormState={dispatchFormState}
+      />
       <CommentInput
-        getUserComment={userComment}
-        updateUserComment={updateUserComment}
+        getUserComment={formState.userComment}
+        dispatchFormState={dispatchFormState}
       />
       <button
         type="submit"
