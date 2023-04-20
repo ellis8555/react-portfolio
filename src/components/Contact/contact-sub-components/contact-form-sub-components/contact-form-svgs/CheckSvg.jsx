@@ -6,7 +6,7 @@ function CheckSvg() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 text-green-500 absolute right-[.25rem] top-1/2 -translate-y-1/2"
     >
       <path
         strokeLinecap="round"
