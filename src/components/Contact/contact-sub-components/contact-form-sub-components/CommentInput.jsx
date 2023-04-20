@@ -4,7 +4,7 @@ import colors from "../../../../utils/colors";
 import CheckSvg from "./contact-form-svgs/CheckSvg";
 import useSetValidations from "../../../../hooks/useSetValidations";
 
-function CommentInput({ getUserComment, updateUserComment }) {
+function CommentInput({ getUserComment, dispatchFormState }) {
   const [valid, setValid] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
   const commentInputRef = useRef();
@@ -19,7 +19,8 @@ function CommentInput({ getUserComment, updateUserComment }) {
   };
 
   useEffect(() => {
-    useSetValidations(userInputRefs);
+    const isCommentValid = useSetValidations(userInputRefs);
+    dispatchFormState({ type: "isCommentValid", payload: isCommentValid });
   }, [userInputRefs.getUserInput]);
 
   return (
@@ -50,7 +51,10 @@ function CommentInput({ getUserComment, updateUserComment }) {
               className="rounded-md p-2 text-black text-lg w-full xl: w-3/4"
               name="comment"
               onChange={(e) => {
-                updateUserComment(e.target.value);
+                dispatchFormState({
+                  type: "updateUserComment",
+                  payload: e.target.value,
+                });
               }}
               onBlur={() => {
                 onBlurZeroInput(
