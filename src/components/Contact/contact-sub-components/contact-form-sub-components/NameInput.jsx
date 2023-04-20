@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { userNameValidator } from "../../../../utils/user-input/validation/validation-tests/contact-name-input";
-import { setSuccessColors } from "../../../../utils/util-methods/setSuccessColor";
 import onBlurZeroInput from "../../../../utils/util-methods/onBlurZeroInput";
 import colors from "../../../../utils/colors";
 import CheckSvg from "./contact-form-svgs/CheckSvg";
+import useSetValidations from "../../../../hooks/useSetValidations";
 
 function NameInput({ getUserName, updateUserName }) {
   const [valid, setValid] = useState(false);
@@ -13,42 +12,13 @@ function NameInput({ getUserName, updateUserName }) {
   const userInputRefs = {
     inputElement: nameInputRef,
     helpElement: nameHelpRef,
-    getUserName: getUserName,
+    getUserInput: getUserName,
+    setValid: setValid,
   };
 
   useEffect(() => {
-    if (userInputRefs.getUserName.length > 0) {
-      const isValid = userNameValidator(userInputRefs.getUserName);
-      if (isValid) {
-        setValid(true);
-        setSuccessColors(
-          userInputRefs.inputElement,
-          colors.OUTLINE_SUCCESS,
-          userInputRefs.helpElement,
-          colors.TEXT_SUCCESS,
-          ...Object.values(colors)
-        );
-      } else {
-        setValid(false);
-        setSuccessColors(
-          userInputRefs.inputElement,
-          colors.OUTLINE_DANGER,
-          userInputRefs.helpElement,
-          colors.TEXT_DANGER,
-          ...Object.values(colors)
-        );
-      }
-    } else {
-      setValid(false);
-      setSuccessColors(
-        userInputRefs.inputElement,
-        colors.OUTLINE_UNSELECTED,
-        userInputRefs.helpElement,
-        colors.TEXT_UNSELECTED,
-        ...Object.values(colors)
-      );
-    }
-  }, [userInputRefs.getUserName]);
+    useSetValidations(userInputRefs);
+  }, [userInputRefs.getUserInput]);
 
   return (
     <>
@@ -68,7 +38,7 @@ function NameInput({ getUserName, updateUserName }) {
             onBlur={() => {
               onBlurZeroInput(
                 userInputRefs.inputElement,
-                userInputRefs.getUserName,
+                userInputRefs.getUserInput,
                 "outline-0",
                 "outline",
                 "outline-2",
