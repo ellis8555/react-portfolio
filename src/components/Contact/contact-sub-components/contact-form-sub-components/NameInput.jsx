@@ -3,6 +3,7 @@ import { userNameValidator } from "../../../../utils/user-input/validation/valid
 import { setSuccessColors } from "../../../../utils/util-methods/setSuccessColor";
 import onBlurZeroInput from "../../../../utils/util-methods/onBlurZeroInput";
 import colors from "../../../../utils/colors";
+import CheckSvg from "./contact-form-svgs/CheckSvg";
 
 function NameInput({ getUserName, updateUserName }) {
   const [valid, setValid] = useState(false);
@@ -56,26 +57,29 @@ function NameInput({ getUserName, updateUserName }) {
       </label>
       <br />
       <div className="mt-2 flex flex-col gap-2 md:flex-row">
-        <input
-          type="text"
-          id="name"
-          ref={userInputRefs.inputElement}
-          onChange={(e) => {
-            updateUserName(e.target.value);
-          }}
-          onBlur={() => {
-            onBlurZeroInput(
-              userInputRefs.inputElement,
-              userInputRefs.getUserName,
-              "outline-0",
-              "outline",
-              "outline-2",
-              colors.TEXT_UNSELECTED
-            );
-          }}
-          className="rounded-md h-10 p-2 text-black text-lg"
-          name="name"
-        />
+        <div className="relative w-full md:w-fit">
+          <input
+            type="text"
+            id="name"
+            ref={userInputRefs.inputElement}
+            onChange={(e) => {
+              updateUserName(e.target.value);
+            }}
+            onBlur={() => {
+              onBlurZeroInput(
+                userInputRefs.inputElement,
+                userInputRefs.getUserName,
+                "outline-0",
+                "outline",
+                "outline-2",
+                colors.TEXT_UNSELECTED
+              );
+            }}
+            className="rounded-md w-full h-10 p-2 text-black text-lg"
+            name="name"
+          />
+          {valid && <CheckSvg />}
+        </div>
         <div
           id="nameHelp"
           ref={userInputRefs.helpElement}
