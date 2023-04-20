@@ -78,7 +78,11 @@ function NameInput({ getUserName, updateUserName }) {
             className="rounded-md w-full h-10 p-2 text-black text-lg"
             name="name"
           />
-          {valid && <CheckSvg />}
+          {valid && (
+            <CheckSvg
+              classes={"absolute right-[.25rem] top-1/2 -translate-y-1/2"}
+            />
+          )}
         </div>
         <div
           id="nameHelp"

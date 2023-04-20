@@ -1,4 +1,4 @@
-function CheckSvg() {
+function CheckSvg({ classes }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ function CheckSvg() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6 text-green-500 absolute right-[.25rem] top-1/2 -translate-y-1/2"
+      className={"w-6 h-6 text-green-500" + " " + classes}
     >
       <path
         strokeLinecap="round"
@@ -16,5 +16,5 @@ function CheckSvg() {
     </svg>
   );
 }
-
+// absolute right-[.25rem] top-1/2 -translate-y-1/2
 export default CheckSvg;
