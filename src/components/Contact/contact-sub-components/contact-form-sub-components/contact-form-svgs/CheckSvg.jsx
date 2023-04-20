@@ -16,5 +16,4 @@ function CheckSvg({ classes }) {
     </svg>
   );
 }
-// absolute right-[.25rem] top-1/2 -translate-y-1/2
 export default CheckSvg;
