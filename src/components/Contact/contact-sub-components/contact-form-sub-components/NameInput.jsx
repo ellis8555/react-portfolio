@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import onBlurZeroInput from "../../../../utils/util-methods/onBlurZeroInput";
 import colors from "../../../../utils/colors";
 import CheckSvg from "./contact-form-svgs/CheckSvg";
+import ExclamationSvg from "./contact-form-svgs/ExclamationSvg";
 import useSetValidations from "../../../../hooks/useSetValidations";
 
 // function NameInput({ getUserName, updateUserName, updateIsNameValid }) {
@@ -54,10 +55,18 @@ function NameInput({ getUserName, dispatchFormState }) {
             className="rounded-md w-full h-10 p-2 text-black text-lg"
             name="name"
           />
-          {valid && (
-            <CheckSvg
-              classes={"absolute right-[.25rem] top-1/2 -translate-y-1/2"}
-            />
+          {userInputRefs.getUserInput.length > 0 ? (
+            valid ? (
+              <CheckSvg
+                classes={"absolute right-[.25rem] top-1/2 -translate-y-1/2"}
+              />
+            ) : (
+              <ExclamationSvg
+                classes={"absolute right-[.25rem] top-1/2 -translate-y-1/2"}
+              />
+            )
+          ) : (
+            ""
           )}
         </div>
         <div
