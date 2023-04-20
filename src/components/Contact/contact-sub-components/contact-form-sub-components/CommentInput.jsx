@@ -13,14 +13,14 @@ function CommentInput({ getUserComment, updateUserComment }) {
   const userInputRefs = {
     inputElement: commentInputRef,
     helpElement: commentHelpRef,
-    getUserComment: getUserComment,
+    getUserInput: getUserComment,
     setValid: setValid,
     setIsEmpty: setIsEmpty,
   };
 
   useEffect(() => {
     useSetValidations(userInputRefs);
-  }, [userInputRefs.getUserComment]);
+  }, [userInputRefs.getUserInput]);
 
   return (
     <>
@@ -31,7 +31,7 @@ function CommentInput({ getUserComment, updateUserComment }) {
           </label>
           {!isEmpty ? (
             <span className={"ml-2" + " " + (!valid && colors.TEXT_DANGER)}>
-              {getUserComment.length}
+              {userInputRefs.getUserInput.length}
               <span className="text-info"> /250</span>
             </span>
           ) : (
@@ -51,7 +51,7 @@ function CommentInput({ getUserComment, updateUserComment }) {
               onBlur={() => {
                 onBlurZeroInput(
                   userInputRefs.inputElement,
-                  userInputRefs.getUserComment,
+                  userInputRefs.getUserInput,
                   "outline-0",
                   "outline",
                   "outline-2",
