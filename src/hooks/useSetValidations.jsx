@@ -1,17 +1,25 @@
 import { setSuccessColors } from "../utils/util-methods/setSuccessColor";
 import { userCommentValidator } from "../utils/user-input/validation/validation-tests/contact-comment-input";
+import { userNameValidator } from "../utils/user-input/validation/validation-tests/contact-name-input";
 import colors from "../utils/colors";
 
 function useSetValidations({
   inputElement,
   helpElement,
-  getUserComment,
+  getUserInput,
   setValid,
-  setIsEmpty,
+  setIsEmpty = () => {
+    null;
+  },
 }) {
-  if (getUserComment.length > 0) {
+  if (getUserInput.length > 0) {
     setIsEmpty(false);
-    const isValid = userCommentValidator(getUserComment);
+    let isValid;
+    if (inputElement.current.name === "name") {
+      isValid = userNameValidator(getUserInput);
+    } else {
+      isValid = userCommentValidator(getUserInput);
+    }
     if (isValid) {
       setValid(true);
       setSuccessColors(
