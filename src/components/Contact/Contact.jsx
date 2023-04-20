@@ -36,7 +36,10 @@ function Contact() {
       <p className="text-center h2 mt-10 line-through">
         Leave a comment or feedback
       </p>
-      <p className="text-center text-warning h2">Not functioning yet</p>
+      <p className="text-center text-info h2">Form validation visuals set.</p>
+      <p className="text-center text-warning h2">
+        Form submission non functional
+      </p>
       <div className=" lg:flex lg:justify-center">
         <BodyContainer width="lg:w-3/4">
           <ContactForm />
