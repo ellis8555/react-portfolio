@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import onBlurZeroInput from "../../../../utils/util-methods/onBlurZeroInput";
 import colors from "../../../../utils/colors";
 import CheckSvg from "./contact-form-svgs/CheckSvg";
+import ExclamationSvg from "./contact-form-svgs/ExclamationSvg";
 import useSetValidations from "../../../../hooks/useSetValidations";
 
 function CommentInput({ getUserComment, dispatchFormState }) {
@@ -69,7 +70,15 @@ function CommentInput({ getUserComment, dispatchFormState }) {
               placeholder="Drop me a comment or leave some feedback"
               rows="10"
             ></textarea>
-            {valid && <CheckSvg classes="absolute top-2 right-2" />}
+            {!isEmpty ? (
+              valid ? (
+                <CheckSvg classes="absolute top-2 right-2" />
+              ) : (
+                <ExclamationSvg classes="absolute top-2 right-2" />
+              )
+            ) : (
+              ""
+            )}
           </div>
           <div
             id="commentHelp"
