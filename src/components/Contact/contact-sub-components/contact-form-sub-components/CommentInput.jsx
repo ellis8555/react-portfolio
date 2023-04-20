@@ -30,7 +30,11 @@ function CommentInput({ getUserComment, updateUserComment }) {
             Comment:
           </label>
           {!isEmpty ? (
-            <span className={"ml-2" + " " + (!valid && colors.TEXT_DANGER)}>
+            <span
+              className={
+                "ml-2" + " " + (!valid ? colors.TEXT_DANGER : "text-green-300")
+              }
+            >
               {userInputRefs.getUserInput.length}
               <span className="text-info"> /250</span>
             </span>
