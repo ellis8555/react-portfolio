@@ -1,3 +1,8 @@
+/*
+Used in <CommentInput/>, <NameInput/>
+returns a boolean allowing for <ContactForm/> submit button to proceed
+*/
+
 import { setSuccessColors } from "../utils/util-methods/setSuccessColor";
 import { userCommentValidator } from "../utils/user-input/validation/validation-tests/contact-comment-input";
 import { userNameValidator } from "../utils/user-input/validation/validation-tests/contact-name-input";
@@ -29,6 +34,7 @@ function useSetValidations({
         colors.TEXT_SUCCESS,
         ...Object.values(colors)
       );
+      return true;
     } else {
       setValid(false);
       setSuccessColors(
@@ -38,6 +44,7 @@ function useSetValidations({
         colors.TEXT_DANGER,
         ...Object.values(colors)
       );
+      return false;
     }
   } else {
     setValid(false);
@@ -49,6 +56,7 @@ function useSetValidations({
       colors.TEXT_UNSELECTED,
       ...Object.values(colors)
     );
+    return false;
   }
 }
 
