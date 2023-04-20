@@ -4,9 +4,14 @@ import CommentInput from "./contact-form-sub-components/CommentInput";
 
 function ContactForm() {
   const [userName, setUserName] = useState("");
+  const [userComment, setUserComment] = useState("");
 
   const updateUserName = (newName) => {
     setUserName(newName);
+  };
+
+  const updateUserComment = (comment) => {
+    setUserComment(comment);
   };
 
   const submitContactForm = (e) => {
@@ -21,7 +26,10 @@ function ContactForm() {
       onSubmit={submitContactForm}
     >
       <NameInput getUserName={userName} updateUserName={updateUserName} />
-      <CommentInput />
+      <CommentInput
+        getUserComment={userComment}
+        updateUserComment={updateUserComment}
+      />
       <button
         type="submit"
         className="bg-blue-600 rounded-md mt-4 px-3 py-2"
