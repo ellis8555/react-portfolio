@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { userCommentValidator } from "../../../../utils/user-input/validation/validation-tests/contact-comment-input";
-import { setSuccessColors } from "../../../../utils/util-methods/setSuccessColor";
 import onBlurZeroInput from "../../../../utils/util-methods/onBlurZeroInput";
 import colors from "../../../../utils/colors";
 import CheckSvg from "./contact-form-svgs/CheckSvg";
+import useSetValidations from "../../../../hooks/useSetValidations";
 
 function CommentInput({ getUserComment, updateUserComment }) {
   const [valid, setValid] = useState(false);
@@ -15,42 +14,12 @@ function CommentInput({ getUserComment, updateUserComment }) {
     inputElement: commentInputRef,
     helpElement: commentHelpRef,
     getUserComment: getUserComment,
+    setValid: setValid,
+    setIsEmpty: setIsEmpty,
   };
 
   useEffect(() => {
-    if (userInputRefs.getUserComment.length > 0) {
-      setIsEmpty(false);
-      const isValid = userCommentValidator(userInputRefs.getUserComment);
-      if (isValid) {
-        setValid(true);
-        setSuccessColors(
-          userInputRefs.inputElement,
-          colors.OUTLINE_SUCCESS,
-          userInputRefs.helpElement,
-          colors.TEXT_SUCCESS,
-          ...Object.values(colors)
-        );
-      } else {
-        setValid(false);
-        setSuccessColors(
-          userInputRefs.inputElement,
-          colors.OUTLINE_DANGER,
-          userInputRefs.helpElement,
-          colors.TEXT_DANGER,
-          ...Object.values(colors)
-        );
-      }
-    } else {
-      setValid(false);
-      setIsEmpty(true);
-      setSuccessColors(
-        userInputRefs.inputElement,
-        colors.OUTLINE_UNSELECTED,
-        userInputRefs.helpElement,
-        colors.TEXT_UNSELECTED,
-        ...Object.values(colors)
-      );
-    }
+    useSetValidations(userInputRefs);
   }, [userInputRefs.getUserComment]);
 
   return (
