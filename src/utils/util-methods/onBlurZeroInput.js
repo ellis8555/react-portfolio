@@ -1,3 +1,7 @@
+/*
+Used in contact form components. NameInput.jsx and CommentInput.jsx
+*/
+
 function onBlurZeroInput(
   element,
   elementLength,

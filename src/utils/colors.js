@@ -1,3 +1,7 @@
+/*
+Used in contact form
+*/
+
 const colors = {
   TEXT_SUCCESS: "text-green-600",
   TEXT_DANGER: "text-danger",

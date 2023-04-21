@@ -1,3 +1,7 @@
+/*
+Used in useSetValidations.jsx
+*/
+
 const setSuccessColors = (
   inputElement,
   setOutlineColor,
