@@ -47,6 +47,9 @@ function ContactForm() {
   const submitContactForm = (e) => {
     e.preventDefault();
     if (!formState.isNameValid || !formState.isCommentValid) {
+      /*
+        Submit form logic goes here
+      */
       return;
     }
     console.log("Form has been validated!");
