@@ -1,8 +1,11 @@
-import { useReducer } from "react";
+import { useState, useReducer, useRef, useEffect } from "react";
 import NameInput from "./contact-form-sub-components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
 
 function ContactForm() {
+  const submitBtn = useRef();
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const formStates = {
     userName: "",
     userComment: "",
@@ -31,6 +34,16 @@ function ContactForm() {
 
   const [formState, dispatchFormState] = useReducer(setFormStatus, formStates);
 
+  useEffect(() => {
+    if (formState.isNameValid && formState.isCommentValid) {
+      submitBtn.current.disabled = false;
+      setIsDisabled(false);
+    } else {
+      submitBtn.current.disabled = true;
+      setIsDisabled(true);
+    }
+  }, [formState.isNameValid, formState.isCommentValid]);
+
   const submitContactForm = (e) => {
     e.preventDefault();
     if (!formState.isNameValid || !formState.isCommentValid) {
@@ -54,9 +67,15 @@ function ContactForm() {
         dispatchFormState={dispatchFormState}
       />
       <button
+        ref={submitBtn}
         type="submit"
-        className="bg-blue-600 rounded-md mt-4 px-3 py-2"
+        className={
+          "rounded-md mt-4 px-3 py-2" +
+          " " +
+          (isDisabled ? "bg-blue-500" : "bg-blue-600")
+        }
         name="submit"
+        disabled
       >
         Submit
       </button>
