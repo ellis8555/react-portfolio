@@ -1,10 +1,15 @@
-import { useState, useReducer, useRef, useEffect } from "react";
+import { useState, useReducer, useRef, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { ProvideDisplayAlert } from "../../App/App";
 import NameInput from "./contact-form-sub-components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
 
-function ContactForm() {
+function ContactForm({ setIsLoading }) {
+  const contactForm = useRef();
   const submitBtn = useRef();
   const [isDisabled, setIsDisabled] = useState(true);
+  const { setDisplayAlert } = useContext(ProvideDisplayAlert);
+  const navigate = useNavigate();
 
   const formStates = {
     userName: "",
@@ -13,7 +18,7 @@ function ContactForm() {
     isCommentValid: false,
   };
 
-  const setFormStatus = (formState, action) => {
+  const setFormStates = (formState, action) => {
     switch (action.type) {
       case "updateUserName":
         return { ...formState, userName: action.payload };
@@ -32,7 +37,7 @@ function ContactForm() {
     }
   };
 
-  const [formState, dispatchFormState] = useReducer(setFormStatus, formStates);
+  const [formState, dispatchFormState] = useReducer(setFormStates, formStates);
 
   useEffect(() => {
     if (formState.isNameValid && formState.isCommentValid) {
@@ -52,11 +57,15 @@ function ContactForm() {
       */
       return;
     }
-    console.log("Form has been validated!");
+    contactForm.current.reset();
+    setIsLoading(true);
+    setDisplayAlert(true);
+    navigate("/");
   };
 
   return (
     <form
+      ref={contactForm}
       className="w-full m-3 my-8 sm:mx-10 lg:w-3/4"
       name="contactForm"
       onSubmit={submitContactForm}
