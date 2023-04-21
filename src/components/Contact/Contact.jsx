@@ -1,48 +1,24 @@
+import { useState } from "react";
 import BodyContainer from "../../utils/components/BodyContainer";
+import ContactHeader from "./contact-sub-components/ContactHeader";
 import ContactForm from "./contact-sub-components/ContactForm";
-import Mail from "./contact-svg/Mail";
+import LoadingAnimation from "./contact-sub-components/contact-form-sub-components/LoadingAnimation";
+import ContactMessages from "./contact-sub-components/contact-form-sub-components/ContactMessages";
 import "./contact.css";
 
-function ContactContent() {
-  return (
-    <div className=" text-center rounded-md w-full py-3 flex flex-col gap-4 md:flex-row md:justify-around">
-      <div>
-        <p className="relative w-fit m-auto text-info font-bold text-xl">
-          <span>
-            <Mail />
-          </span>
-          lsp1@hotmail
-        </p>
-      </div>
-      <div>
-        <a
-          href="https://www.linkedin.com/in/lonnie-smith-4b0583208/"
-          id="linkedinLink"
-          className="text-info font-bold text-xl underline"
-        >
-          My Linkedin
-        </a>
-      </div>
-    </div>
-  );
-}
-
+// this is the main component
 function Contact() {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
       <BodyContainer title="Contact Me">
-        <ContactContent />
+        <ContactHeader />
       </BodyContainer>
-      <p className="text-center h2 mt-10 line-through">
-        Leave a comment or feedback
-      </p>
-      <p className="text-center text-info h2">Form validation visuals set.</p>
-      <p className="text-center text-warning h4">
-        Form submission near complete
-      </p>
+      {isLoading ? <LoadingAnimation /> : <ContactMessages />}
       <div className=" lg:flex lg:justify-center">
         <BodyContainer width="lg:w-3/4">
-          <ContactForm />
+          <ContactForm setIsLoading={setIsLoading} />
         </BodyContainer>
       </div>
     </>
