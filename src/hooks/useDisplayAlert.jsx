@@ -5,24 +5,26 @@ Used in Home.jsx after contact form submitted
 import { useEffect } from "react";
 
 function useDisplayAlert(displayAlert, setDisplayAlert, messageParagraph) {
+  const minimizeTimings = {
+    reduceHeightBy: 4,
+    reduceHeightOnTheseSeconds: 10,
+    timeToBeginHidingAlert: 3000,
+    additionalBufferTime: 25,
+    timeToHideDisplayAlert: function () {
+      return (
+        (parseInt(getComputedStyle(messageParagraph.current).height) /
+          this.reduceHeightOnTheseSeconds) *
+          this.reduceHeightOnTheseSeconds +
+        this.timeToBeginHidingAlert +
+        this.additionalBufferTime
+      );
+    },
+  };
+
   useEffect(() => {
     if (displayAlert) {
       document.documentElement.scrollIntoView(top);
-      const minimizeTimings = {
-        reduceHeightBy: 4,
-        reduceHeightOnTheseSeconds: 10,
-        timeToBeginHidingAlert: 3000,
-        additionalBufferTime: 25,
-        timeToHideDisplayAlert: function () {
-          return (
-            (parseInt(getComputedStyle(messageParagraph.current).height) /
-              this.reduceHeightOnTheseSeconds) *
-              this.reduceHeightOnTheseSeconds +
-            this.timeToBeginHidingAlert +
-            this.additionalBufferTime
-          );
-        },
-      };
+
       let innerInterval;
 
       const beginReductionOfHeight = setTimeout(() => {
