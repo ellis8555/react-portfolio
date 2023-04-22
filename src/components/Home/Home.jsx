@@ -13,11 +13,22 @@ function Home() {
   useEffect(() => {
     if (displayAlert) {
       document.documentElement.scrollIntoView(top);
+      const minimizeTimings = {
+        reduceHeightBy: 4,
+        reduceHeightOnTheseSeconds: 10,
+        timeToBeginHidingAlert: 3000,
+        additionalBufferTime: 25,
+        timeToHideDisplayAlert: function () {
+          return (
+            (parseInt(getComputedStyle(messageParagraph.current).height) /
+              this.reduceHeightOnTheseSeconds) *
+              this.reduceHeightOnTheseSeconds +
+            this.timeToBeginHidingAlert +
+            this.additionalBufferTime
+          );
+        },
+      };
       let innerInterval;
-      const timeToHideDisplayAlert =
-        (parseInt(getComputedStyle(messageParagraph.current).height) / 10) *
-          10 +
-        3075;
 
       const beginReductionOfHeight = setTimeout(() => {
         innerInterval = setInterval(() => {
@@ -26,15 +37,15 @@ function Home() {
           );
           if (messageParagraphHeight > 0) {
             messageParagraph.current.style.height = `${
-              messageParagraphHeight - 4
+              messageParagraphHeight - minimizeTimings.reduceHeightBy
             }px`;
           }
-        }, 10);
-      }, 3000);
+        }, minimizeTimings.reduceHeightOnTheseSeconds);
+      }, minimizeTimings.timeToBeginHidingAlert);
 
       const showAlert = setTimeout(() => {
         setDisplayAlert(false);
-      }, timeToHideDisplayAlert);
+      }, minimizeTimings.timeToHideDisplayAlert());
       return () => {
         clearTimeout(showAlert);
         clearTimeout(beginReductionOfHeight);
