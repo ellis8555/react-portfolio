@@ -28,9 +28,12 @@ const ProvideDisplayAlert = createContext();
 
 function App() {
   const [displayAlert, setDisplayAlert] = useState(false);
+  const [messageToDisplay, setMessageToDisplay] = useState("");
   const displayValues = {
     displayAlert,
     setDisplayAlert,
+    messageToDisplay,
+    setMessageToDisplay,
   };
 
   return (
