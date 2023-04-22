@@ -1,3 +1,7 @@
+/*
+Used in Certificates.jsx
+*/
+
 function useWYWMImages() {
   const eachWYWMCertificateImage = [
     {

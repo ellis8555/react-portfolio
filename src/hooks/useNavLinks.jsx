@@ -1,3 +1,7 @@
+/*
+Used in Header.jsx
+*/
+
 function useNavLinks(isLoggedIn) {
   const links = [
     {

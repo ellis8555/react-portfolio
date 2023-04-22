@@ -1,3 +1,7 @@
+/*
+Used in Construction.jsx
+*/
+
 function useProjectLogos() {
   const projectImages = {
     reactVersionImgs: {
