@@ -8,7 +8,8 @@ import HomeMessagePoints from "./Home-components/HomeMessagePoints";
 import Certificates from "../Certificates/Certificates";
 
 function Home() {
-  const { displayAlert, setDisplayAlert } = useContext(ProvideDisplayAlert);
+  const { displayAlert, setDisplayAlert, messageToDisplay } =
+    useContext(ProvideDisplayAlert);
   const messageParagraph = useRef();
 
   useDisplayAlert(displayAlert, setDisplayAlert, messageParagraph);
@@ -19,6 +20,7 @@ function Home() {
         <BodyContainer>
           <HomeAlertMessage
             messageParagraph={messageParagraph}
+            messageToDisplay={messageToDisplay}
             displayAlert={displayAlert}
           />
         </BodyContainer>
