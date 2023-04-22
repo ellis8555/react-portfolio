@@ -8,7 +8,8 @@ function ContactForm({ setIsLoading }) {
   const contactForm = useRef();
   const submitBtn = useRef();
   const [isDisabled, setIsDisabled] = useState(true);
-  const { setDisplayAlert } = useContext(ProvideDisplayAlert);
+  const { setDisplayAlert, setMessageToDisplay } =
+    useContext(ProvideDisplayAlert);
   const navigate = useNavigate();
 
   const formStates = {
@@ -57,9 +58,14 @@ function ContactForm({ setIsLoading }) {
       */
       return;
     }
+    // this is message that will display for three seconds after successful form submission
+    setMessageToDisplay("Test: contact form submission not quite complete");
     contactForm.current.reset();
+    // this displays loading icon waiting for response
     setIsLoading(true);
+    // this activates the message to user form has been submitted on home element
     setDisplayAlert(true);
+    // send back to home after form submitted
     navigate("/");
   };
 
