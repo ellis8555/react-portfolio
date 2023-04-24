@@ -1,5 +1,5 @@
 import { useRef, useContext } from "react";
-import { ProvideDisplayAlert } from "../App/App";
+import { DisplayAlertContext } from "../../contexts/DisplayAlertContext";
 import useDisplayAlert from "../../hooks/useDisplayAlert";
 import BodyContainer from "../../utils/components/BodyContainer";
 import HomeAlertMessage from "./Home-components/HomeAlertMessage";
@@ -9,7 +9,7 @@ import Certificates from "../Certificates/Certificates";
 
 function Home() {
   const { displayAlert, setDisplayAlert, messageToDisplay } =
-    useContext(ProvideDisplayAlert);
+    useContext(DisplayAlertContext);
   const messageParagraph = useRef();
 
   useDisplayAlert(displayAlert, setDisplayAlert, messageParagraph);
