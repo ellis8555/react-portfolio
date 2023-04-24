@@ -1,10 +1,10 @@
-import { useState, createContext } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { ProvideDisplayAlert } from "../../contexts/DisplayAlertContext";
 import Home from "../Home/Home";
 import RootLayout from "../../Layouts/RootLayout";
 import Contact from "../Contact/Contact";
@@ -24,24 +24,12 @@ const router = createBrowserRouter(
   )
 );
 
-const ProvideDisplayAlert = createContext();
-
 function App() {
-  const [displayAlert, setDisplayAlert] = useState(false);
-  const [messageToDisplay, setMessageToDisplay] = useState("");
-  const displayValues = {
-    displayAlert,
-    setDisplayAlert,
-    messageToDisplay,
-    setMessageToDisplay,
-  };
-
   return (
-    <ProvideDisplayAlert.Provider value={displayValues}>
+    <ProvideDisplayAlert>
       <RouterProvider router={router} />
-    </ProvideDisplayAlert.Provider>
+    </ProvideDisplayAlert>
   );
 }
 
 export default App;
-export { ProvideDisplayAlert };
