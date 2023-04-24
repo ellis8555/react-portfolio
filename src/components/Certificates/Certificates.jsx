@@ -4,6 +4,7 @@ import LeftArrow from "./Certificate-svgs/LeftArrow";
 import slideRight from "./Certificate-methods/slideRight";
 import slideLeft from "./Certificate-methods/slideLeft";
 import useWYWMImages from "../../hooks/useWYWMImages";
+import EachCertificate from "./Certificate-sub-components/EachCertificate";
 
 function Certificates() {
   const eachWYWMCertificateImage = useWYWMImages();
@@ -23,20 +24,21 @@ function Certificates() {
   };
 
   return (
-    <div className="overflow-x-hidden relative w-[35rem] lg:w-[50rem] mx-auto">
-      <div className="absolute top-[50%] right-6 text-yellow-600 z-10 hover:cursor-pointer hover:text-info md:right-10 lg:right-32 md:text-info md:hover:text-blue-500">
-        <RightArrow slideRight={() => slideRight(setSliderArguments)} />
-      </div>
-      <div className="absolute top-[50%] left-6 z-10 text-yellow-600 hover:cursor-pointer hover:text-info md:left-10 lg:left-32 md:text-info md:hover:text-blue-500">
-        <LeftArrow slideLeft={() => slideLeft(setSliderArguments)} />
-      </div>
-      <p className="h1 py-6">Certificates</p>
-      <div ref={imageContainer} className="flex justify-center mx-6">
-        <img
-          src={eachWYWMCertificateImage[currentIndex.current].src}
-          alt={eachWYWMCertificateImage[currentIndex.current].alt}
-          className="h-[32rem] lg:h-[36rem]"
-        />
+    <div className="relative bg-warning mx-auto">
+      <h1 className="h1 py-6">Certificates</h1>
+      <div className="overflow-x-hidden w-[35rem] lg:w-[50rem] mx-auto">
+        <div className="absolute top-[50%] right-6 text-yellow-600 z-10 hover:cursor-pointer hover:text-info md:right-10 lg:right-32 md:text-info md:hover:text-blue-500">
+          <RightArrow slideRight={() => slideRight(setSliderArguments)} />
+        </div>
+        <div className="absolute top-[50%] left-6 z-10 text-yellow-600 hover:cursor-pointer hover:text-info md:left-10 lg:left-32 md:text-info md:hover:text-blue-500">
+          <LeftArrow slideLeft={() => slideLeft(setSliderArguments)} />
+        </div>
+
+        <div ref={imageContainer} className="w-max">
+          <EachCertificate
+            eachWYWMCertificateImage={eachWYWMCertificateImage}
+          />
+        </div>
       </div>
     </div>
   );
