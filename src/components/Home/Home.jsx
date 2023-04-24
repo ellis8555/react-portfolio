@@ -31,7 +31,7 @@ function Home() {
       <BodyContainer>
         <HomeMessagePoints />
       </BodyContainer>
-      <div className="flex justify-center">
+      <div className="flex justify-center mx-auto">
         <Certificates />
       </div>
     </>
