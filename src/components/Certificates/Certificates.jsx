@@ -25,6 +25,7 @@ function Certificates() {
 
   return (
     <div className="relative overflow-hidden">
+      <h1 className="h1 py-6">Certificates</h1>
       <div className="absolute top-[50%] right-6 text-yellow-600 z-10  hover:cursor-pointer hover:text-info md:text-info md:hover:text-blue-500">
         <RightArrow slideRight={() => slideRight(setSliderArguments)} />
       </div>
@@ -32,7 +33,6 @@ function Certificates() {
         <LeftArrow slideLeft={() => slideLeft(setSliderArguments)} />
       </div>
       <div className="overflow-hidden">
-        <h1 className="h1 py-6">Certificates</h1>
         <div className="overflow-x-hidden w-[35rem] lg:w-[50rem] mx-auto">
           <div ref={imageContainer} className="w-max">
             <EachCertificate
