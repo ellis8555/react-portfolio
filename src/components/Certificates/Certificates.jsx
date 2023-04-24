@@ -24,7 +24,7 @@ function Certificates() {
   };
 
   return (
-    <div className="relative bg-warning mx-auto">
+    <div className="relative">
       <h1 className="h1 py-6">Certificates</h1>
       <div className="overflow-x-hidden w-[35rem] lg:w-[50rem] mx-auto">
         <div className="absolute top-[50%] right-6 text-yellow-600 z-10 hover:cursor-pointer hover:text-info md:right-10 lg:right-32 md:text-info md:hover:text-blue-500">
