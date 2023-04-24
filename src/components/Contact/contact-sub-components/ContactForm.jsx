@@ -1,6 +1,6 @@
 import { useState, useReducer, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ProvideDisplayAlert } from "../../App/App";
+import { DisplayAlertContext } from "../../../contexts/DisplayAlertContext";
 import NameInput from "./contact-form-sub-components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
 
@@ -9,7 +9,7 @@ function ContactForm({ setIsLoading }) {
   const submitBtn = useRef();
   const [isDisabled, setIsDisabled] = useState(true);
   const { setDisplayAlert, setMessageToDisplay } =
-    useContext(ProvideDisplayAlert);
+    useContext(DisplayAlertContext);
   const navigate = useNavigate();
 
   const formStates = {
