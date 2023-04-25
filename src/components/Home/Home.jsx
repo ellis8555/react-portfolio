@@ -31,7 +31,7 @@ function Home() {
       <BodyContainer>
         <HomeMessagePoints />
       </BodyContainer>
-      <div className="flex justify-center mx-auto w-[90vw] overflow-hidden">
+      <div className="flex justify-center mx-auto overflow-hidden">
         <Certificates />
       </div>
     </>
