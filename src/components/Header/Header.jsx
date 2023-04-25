@@ -26,7 +26,7 @@ function Header() {
 
   return (
     <>
-      <header className="sticky top-0">
+      <header className="sticky top-0 z-10">
         <Hamburger
           expandMenu={() => {
             expandMenu(header, nav, links.length);
