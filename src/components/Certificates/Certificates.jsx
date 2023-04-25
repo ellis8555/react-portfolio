@@ -11,6 +11,7 @@ function Certificates() {
   const [imageCount, setImageCount] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
   const imageContainer = useRef();
+  const rightArrowContainer = useRef();
   const currentIndex = useRef(0);
 
   useEffect(() => {
@@ -24,21 +25,29 @@ function Certificates() {
   };
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="overflow-hidden">
       <h1 className="h1 py-6">Certificates</h1>
-      <div className="absolute top-[50%] right-6 text-yellow-600 z-10  hover:cursor-pointer hover:text-info md:text-info md:hover:text-blue-500">
-        <RightArrow slideRight={() => slideRight(setSliderArguments)} />
-      </div>
-      <div className="absolute top-[50%] left-6 z-10 text-yellow-600  hover:cursor-pointer hover:text-info md:text-info md:hover:text-blue-500">
-        <LeftArrow slideLeft={() => slideLeft(setSliderArguments)} />
-      </div>
-      <div className="overflow-hidden">
-        <div className="overflow-x-hidden w-[35rem] lg:w-[50rem] mx-auto">
-          <div ref={imageContainer} className="w-max">
-            <EachCertificate
-              eachWYWMCertificateImage={eachWYWMCertificateImage}
-            />
+      <div
+        ref={imageContainer}
+        className="relative flex flex-row overflow-hidden"
+      >
+        <div className="absolute h-min self-center text-yellow-600   hover:cursor-pointer hover:text-info sm:relative md:text-info md:hover:text-blue-500">
+          <LeftArrow slideLeft={() => slideLeft(setSliderArguments)} />
+        </div>
+        <div className="overflow-hidden">
+          <div className="overflow-x-hidden w-[25rem] mx-auto">
+            <div className="w-max">
+              <EachCertificate
+                eachWYWMCertificateImage={eachWYWMCertificateImage}
+              />
+            </div>
           </div>
+        </div>
+        <div
+          ref={rightArrowContainer}
+          className="absolute h-min self-center right-0 text-yellow-600 hover:cursor-pointer hover:text-info sm:relative md:text-info md:hover:text-blue-500"
+        >
+          <RightArrow slideRight={() => slideRight(setSliderArguments)} />
         </div>
       </div>
     </div>
