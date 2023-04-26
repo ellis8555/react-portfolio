@@ -13,14 +13,14 @@ function Header() {
   const links = useNavLinks(isLoggedIn);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const setBgOnScroll = () => {
       setNavBackground(nav);
-    });
+    };
+
+    window.addEventListener("scroll", setBgOnScroll);
 
     return () => {
-      window.removeEventListener("scroll", () => {
-        setNavBackground(nav);
-      });
+      window.removeEventListener("scroll", setBgOnScroll);
     };
   }, []);
 
