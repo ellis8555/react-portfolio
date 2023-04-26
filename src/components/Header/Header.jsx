@@ -11,6 +11,7 @@ function Header() {
   const lowYPos = useRef(window.pageYOffset);
   const highYPos = useRef(window.pageYOffset);
   const diffInYPos = useRef(0);
+  const [isScrollingDown, setIsScrollingdown] = useState(false);
   const yPosRenderCount = useRef(0);
   const yPosRenderPause = useRef(false);
   const header = useRef();
@@ -24,13 +25,10 @@ function Header() {
 
     window.addEventListener("scroll", setBgOnScroll);
 
+    yPosRenderCount.current = yPosRenderCount.current + 1;
     return () => {
       window.removeEventListener("scroll", setBgOnScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    yPosRenderCount.current = yPosRenderCount.current + 1;
   }, [yPos]);
 
   useEffect(() => {
@@ -50,6 +48,15 @@ function Header() {
     }
   }, [yPosRenderCount.current]);
 
+  useEffect(() => {
+    if (diffInYPos.current >= 0) {
+      setIsScrollingdown(true);
+    }
+    if (diffInYPos.current <= 0) {
+      setIsScrollingdown(false);
+    }
+  }, [diffInYPos.current]);
+
   return (
     <>
       <header className="sticky top-0 z-10">
@@ -62,13 +69,13 @@ function Header() {
           ref={header}
           className="h-0 flex justify-center sm:opacity-100 sm:h-full sm:mx-6 md:mx-10 lg:mx-12"
         >
-          {diffInYPos.current <= 0 && (
+          {!isScrollingDown && (
             <nav
               ref={nav}
               className={
                 "overflow-hidden w-full flex flex-col sm:h-full sm:rounded-md sm:flex-row sm:justify-between" +
                 " " +
-                (yPos < 169 ? "bg-primary-25" : "bg-info-90")
+                (yPos < 125 ? "bg-primary-25" : "bg-info-90")
               }
             >
               <LeftNav links={links} />
