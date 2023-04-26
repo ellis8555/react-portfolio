@@ -8,6 +8,11 @@ import expandMenu from "../Nav/nav-methods/expandMenu";
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [yPos, setYPos] = useState(window.pageYOffset);
+  const lowYPos = useRef(window.pageYOffset);
+  const highYPos = useRef(window.pageYOffset);
+  const diffInYPos = useRef(0);
+  const yPosRenderCount = useRef(0);
+  const yPosRenderPause = useRef(false);
   const header = useRef();
   const nav = useRef();
   const links = useNavLinks(isLoggedIn);
@@ -24,6 +29,27 @@ function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    yPosRenderCount.current = yPosRenderCount.current + 1;
+  }, [yPos]);
+
+  useEffect(() => {
+    const yPosRenderRemainder = yPosRenderCount.current % 5;
+    if (yPosRenderRemainder === 0 && yPosRenderPause.current === false) {
+      lowYPos.current = window.pageYOffset;
+      yPosRenderPause.current = true;
+    }
+  }, [yPosRenderCount.current]);
+
+  useEffect(() => {
+    const yPosRenderRemainder = yPosRenderCount.current % 10;
+    if (yPosRenderRemainder === 0) {
+      highYPos.current = window.pageYOffset;
+      diffInYPos.current = highYPos.current - lowYPos.current;
+      yPosRenderPause.current = false;
+    }
+  }, [yPosRenderCount.current]);
+
   return (
     <>
       <header className="sticky top-0 z-10">
@@ -36,17 +62,19 @@ function Header() {
           ref={header}
           className="h-0 flex justify-center sm:opacity-100 sm:h-full sm:mx-6 md:mx-10 lg:mx-12"
         >
-          <nav
-            ref={nav}
-            className={
-              "overflow-hidden w-full flex flex-col sm:h-full sm:rounded-md sm:flex-row sm:justify-between" +
-              " " +
-              (yPos < 69 ? "bg-primary-25" : "bg-info-90")
-            }
-          >
-            <LeftNav links={links} />
-            <RightNav links={links} />
-          </nav>
+          {diffInYPos.current <= 0 && (
+            <nav
+              ref={nav}
+              className={
+                "overflow-hidden w-full flex flex-col sm:h-full sm:rounded-md sm:flex-row sm:justify-between" +
+                " " +
+                (yPos < 169 ? "bg-primary-25" : "bg-info-90")
+              }
+            >
+              <LeftNav links={links} />
+              <RightNav links={links} />
+            </nav>
+          )}
         </div>
       </header>
     </>
