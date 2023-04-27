@@ -59,6 +59,28 @@ function Header() {
 
   // sets yPos and counts how many renders
   useEffect(() => {
+    const watchForWindowResize = () => {
+      window.onresize = () => {
+        setDocumentWidth(document.documentElement.offsetWidth);
+      };
+    };
+
+    window.addEventListener("resize", watchForWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", watchForWindowResize);
+    };
+  }, [documentWidth]);
+
+  useEffect(() => {
+    if (documentWidth < 640) {
+      setIsHamburger(true);
+    } else {
+      setIsHamburger(false);
+    }
+  }, [documentWidth]);
+
+  useEffect(() => {
     const setBgOnScroll = () => {
       setYPos(window.pageYOffset);
     };
