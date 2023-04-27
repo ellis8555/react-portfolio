@@ -7,16 +7,43 @@ import expandMenu from "../Nav/nav-methods/expandMenu";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [documentWidth, setDocumentWidth] = useState(
+    document.documentElement.offsetWidth
+  );
+  const [isHamburger, setIsHamburger] = useState(true);
   const [yPos, setYPos] = useState(window.pageYOffset);
   const lowYPos = useRef(window.pageYOffset);
   const highYPos = useRef(window.pageYOffset);
   const diffInYPos = useRef(0);
   const [isScrollingDown, setIsScrollingdown] = useState(false);
+  const okToHideNavBar = useRef(false);
   const yPosRenderCount = useRef(0);
   const yPosRenderPause = useRef(false);
   const header = useRef();
   const nav = useRef();
   const links = useNavLinks(isLoggedIn);
+
+  useEffect(() => {
+    const watchForWindowResize = () => {
+      window.onresize = () => {
+        setDocumentWidth(document.documentElement.offsetWidth);
+      };
+    };
+
+    window.addEventListener("resize", watchForWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", watchForWindowResize);
+    };
+  }, [documentWidth]);
+
+  useEffect(() => {
+    if (documentWidth < 640) {
+      setIsHamburger(true);
+    } else {
+      setIsHamburger(false);
+    }
+  }, [documentWidth]);
 
   useEffect(() => {
     const setBgOnScroll = () => {
@@ -57,6 +84,14 @@ function Header() {
     }
   }, [diffInYPos.current]);
 
+  useEffect(() => {
+    if (!isHamburger && isScrollingDown) {
+      okToHideNavBar.current = true;
+    } else {
+      okToHideNavBar.current = false;
+    }
+  }, [isHamburger, isScrollingDown]);
+
   return (
     <>
       <header className="sticky top-0 z-10">
@@ -69,7 +104,7 @@ function Header() {
           ref={header}
           className="h-0 flex justify-center sm:opacity-100 sm:h-full sm:mx-6 md:mx-10 lg:mx-12"
         >
-          {!isScrollingDown && (
+          {!okToHideNavBar.current && (
             <nav
               ref={nav}
               className={
