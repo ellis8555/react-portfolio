@@ -7,17 +7,57 @@ import expandMenu from "../Nav/nav-methods/expandMenu";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // width needed for navbar hiding on scroll if not mobile
+  const [documentWidth, setDocumentWidth] = useState(
+    document.documentElement.offsetWidth
+  );
+  // detects small screen so as not to hide navbar
+  const [isHamburger, setIsHamburger] = useState(true);
+  // position needed for color of navbar and scroll direction
   const [yPos, setYPos] = useState(window.pageYOffset);
+  // positions needed to calculate scroll direction
   const lowYPos = useRef(window.pageYOffset);
   const highYPos = useRef(window.pageYOffset);
+  // the difference between the two scroll positions to determine direction
   const diffInYPos = useRef(0);
   const [isScrollingDown, setIsScrollingdown] = useState(false);
+  // determines if navbar can be hidden on scroll down
+  const okToHideNavBar = useRef(false);
   const yPosRenderCount = useRef(0);
+  // used to set yPos on second take and leave the first recorded yPos as is
+  // otherwise same result duplicated
   const yPosRenderPause = useRef(false);
+  // element references
   const header = useRef();
   const nav = useRef();
+  // for displaying links on navbar
   const links = useNavLinks(isLoggedIn);
 
+  // sets documentWidth
+  useEffect(() => {
+    const watchForWindowResize = () => {
+      window.onresize = () => {
+        setDocumentWidth(document.documentElement.offsetWidth);
+      };
+    };
+
+    window.addEventListener("resize", watchForWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", watchForWindowResize);
+    };
+  }, [documentWidth]);
+
+  // sets isHamburger
+  useEffect(() => {
+    if (documentWidth < 640) {
+      setIsHamburger(true);
+    } else {
+      setIsHamburger(false);
+    }
+  }, [documentWidth]);
+
+  // sets yPos and counts how many renders
   useEffect(() => {
     const setBgOnScroll = () => {
       setYPos(window.pageYOffset);
@@ -31,6 +71,7 @@ function Header() {
     };
   }, [yPos]);
 
+  // sets the lowYPos on the fifth render
   useEffect(() => {
     const yPosRenderRemainder = yPosRenderCount.current % 5;
     if (yPosRenderRemainder === 0 && yPosRenderPause.current === false) {
@@ -39,6 +80,7 @@ function Header() {
     }
   }, [yPosRenderCount.current]);
 
+  // sets the highYPos on the tenth render
   useEffect(() => {
     const yPosRenderRemainder = yPosRenderCount.current % 10;
     if (yPosRenderRemainder === 0) {
@@ -48,6 +90,7 @@ function Header() {
     }
   }, [yPosRenderCount.current]);
 
+  // sets the direction of scroll
   useEffect(() => {
     if (diffInYPos.current >= 0) {
       setIsScrollingdown(true);
@@ -56,6 +99,16 @@ function Header() {
       setIsScrollingdown(false);
     }
   }, [diffInYPos.current]);
+
+  // determine if navbar can be hidden or not
+  // not on mobile ok on larger screens
+  useEffect(() => {
+    if (!isHamburger && isScrollingDown) {
+      okToHideNavBar.current = true;
+    } else {
+      okToHideNavBar.current = false;
+    }
+  }, [isHamburger, isScrollingDown]);
 
   return (
     <>
@@ -69,7 +122,7 @@ function Header() {
           ref={header}
           className="h-0 flex justify-center sm:opacity-100 sm:h-full sm:mx-6 md:mx-10 lg:mx-12"
         >
-          {!isScrollingDown && (
+          {!okToHideNavBar.current && (
             <nav
               ref={nav}
               className={
