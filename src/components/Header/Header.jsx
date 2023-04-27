@@ -72,6 +72,7 @@ function Header() {
     };
   }, [documentWidth]);
 
+  // determine if hamburger menu displayed
   useEffect(() => {
     if (documentWidth < 640) {
       setIsHamburger(true);
@@ -80,6 +81,7 @@ function Header() {
     }
   }, [documentWidth]);
 
+  // sets yPos and updates render count
   useEffect(() => {
     const setBgOnScroll = () => {
       setYPos(window.pageYOffset);
