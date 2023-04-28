@@ -4,10 +4,10 @@ export default function animateOpenMenu(header, linksLength) {
 
   const animate = setInterval(() => {
     if (currentMenuHeight < menuHeight) {
-      currentMenuHeight += 0.5;
+      currentMenuHeight += 0.25;
       header.current.style.height = `${currentMenuHeight}rem`;
     }
-  }, 10);
+  }, 9);
 
   if (currentMenuHeight >= menuHeight) {
     clearInterval(animate);

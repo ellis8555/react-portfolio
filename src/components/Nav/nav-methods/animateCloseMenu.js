@@ -1,6 +1,6 @@
 export default function animateCloseMenu(header, linksLength, getMenu) {
   let currentMenuHeight = linksLength * 2.5;
-  const timeTakenToAnimate = (currentMenuHeight / 0.5) * currentMenuHeight;
+  const timeTakenToAnimate = (currentMenuHeight / 0.25) * currentMenuHeight;
 
   setTimeout(() => {
     header.current.classList.add("h-0");
@@ -10,10 +10,10 @@ export default function animateCloseMenu(header, linksLength, getMenu) {
 
   const animate = setInterval(() => {
     if (currentMenuHeight > 0) {
-      currentMenuHeight -= 0.5;
+      currentMenuHeight -= 0.25;
       header.current.style.height = `${currentMenuHeight}rem`;
     }
-  }, 10);
+  }, 9);
 
   if (currentMenuHeight <= 0) {
     clearInterval(animate);
