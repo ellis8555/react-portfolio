@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import useNavLinks from "../../hooks/useNavLinks";
 import LeftNav from "../Nav/LeftNav";
 import RightNav from "../Nav/RightNav";
 import Hamburger from "../Nav/nav-svgs/Hamburger";
 import expandMenu from "../Nav/nav-methods/expandMenu";
+import { DisplayAlertContext } from "../../contexts/DisplayAlertContext";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,7 +23,8 @@ function Header() {
   const diffInYPos = useRef(0);
   const [isScrollingDown, setIsScrollingdown] = useState(false);
   // determines if navbar can be hidden on scroll down
-  const okToHideNavBar = useRef(false);
+  // const okToHideNavBar = useRef(false);
+  const { okToHideNavBar } = useContext(DisplayAlertContext);
   const yPosRenderCount = useRef(0);
   // used to set yPos on second take and leave the first recorded yPos as is
   // otherwise same result duplicated
