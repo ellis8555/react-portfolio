@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { DisplayAlertContext } from "../../../contexts/DisplayAlertContext";
 import NameInput from "./contact-form-sub-components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
+import { sanitizeComment } from "../../../utils/util-methods/sanitizeTextInput";
 
 function ContactForm({ setIsLoading }) {
   const contactForm = useRef();
@@ -46,30 +47,59 @@ function ContactForm({ setIsLoading }) {
     }
   }, [formState.isNameValid, formState.isCommentValid]);
 
-  const submitContactForm = (e) => {
+  const submitContactForm = async (e) => {
     e.preventDefault();
     if (!formState.isNameValid || !formState.isCommentValid) {
       return;
     }
     // this displays loading icon waiting for response
     setIsLoading(true);
-    /********************************
-        Submit form logic goes here
 
+    const userInput = {
+      name: formState.userName,
+      userMessage: sanitizeComment(formState.userComment),
+    };
 
+    const CONTACT_ENDPOINT = "https://angry-slug-peplum.cyclic.app/contact";
 
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInput),
+      });
 
+      const result = await response.json();
 
-
-
-    ***********************************/
-    ///////////////////////////////////////////////////////////
-    // REMEMBER TO REMOVE THIS TIMER ONCE FETCH ACTUALLY OCCURS
-    ///////////////////////////////////////////////////////////
-    setTimeout(() => {
+      if (response.ok) {
+        // this is message that will display for three seconds after successful form submission
+        setMessageToDisplay(`${result.name} your message has been submitted!`);
+        // this activates the message to user form has been submitted on home element
+        setDisplayAlert(true);
+        okToHideNavBar.current = false;
+        // clear the form
+        contactForm.current.reset();
+        // send back to home after form submitted
+        navigate("/");
+      } else {
+        // this is message that will display for three seconds after successful form submission
+        setMessageToDisplay(
+          `Something went wrong and your message was not submitted`
+        );
+        // this activates the message to user form has been submitted on home element
+        setDisplayAlert(true);
+        okToHideNavBar.current = false;
+        // clear the form
+        contactForm.current.reset();
+        // send back to home after form submitted
+        navigate("/");
+      }
+    } catch (error) {
       // this is message that will display for three seconds after successful form submission
       setMessageToDisplay(
-        `${formState.userName} to actually leave a comment please goto my fully functional portfolio version. Thank you!`
+        `Something went wrong and your message was not submitted`
       );
       // this activates the message to user form has been submitted on home element
       setDisplayAlert(true);
@@ -78,7 +108,7 @@ function ContactForm({ setIsLoading }) {
       contactForm.current.reset();
       // send back to home after form submitted
       navigate("/");
-    }, 1500);
+    }
   };
 
   return (
