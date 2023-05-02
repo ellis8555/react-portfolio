@@ -5,7 +5,7 @@ function HomeMessagePoints() {
     "Any animations are original using javascript",
     "Resize observer keeps proper navbar size upon resize from mobile to larger screens",
     "Intersection observer upcoming for more animations",
-    "This project will share the same back-end as the vanilla version of this project",
+    "This project shares the same back-end as the vanilla version of this project",
   ];
 
   return (
