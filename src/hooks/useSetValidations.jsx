@@ -1,11 +1,12 @@
 /*
-Used in <CommentInput/>, <NameInput/>
+Used in <CommentInput/>, <NameInput/>, <Password />
 returns a boolean allowing for <ContactForm/> submit button to proceed
 */
 
 import { setSuccessColors } from "../utils/util-methods/setSuccessColor";
 import { userCommentValidator } from "../utils/user-input/validation/validation-tests/contact-comment-input";
 import { userNameValidator } from "../utils/user-input/validation/validation-tests/contact-name-input";
+import { userPasswordValidator } from "../utils/user-input/validation/validation-tests/signup-password-input";
 import colors from "../utils/colors";
 
 function useSetValidations({
@@ -22,6 +23,8 @@ function useSetValidations({
     let isValid;
     if (inputElement.current.name === "name") {
       isValid = userNameValidator(getUserInput);
+    } else if (inputElement.current.name === "password") {
+      isValid = userPasswordValidator(getUserInput);
     } else {
       isValid = userCommentValidator(getUserInput);
     }
