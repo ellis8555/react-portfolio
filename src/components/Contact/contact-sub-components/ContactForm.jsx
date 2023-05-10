@@ -1,7 +1,7 @@
-import { useState, useReducer, useRef, useEffect, useContext } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { DisplayAlertContext } from "../../../contexts/DisplayAlertContext";
-import NameInput from "./contact-form-sub-components/NameInput";
+import NameInput from "../../../utils/components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
 import { sanitizeComment } from "../../../utils/util-methods/sanitizeTextInput";
 
@@ -9,33 +9,19 @@ function ContactForm({ setIsLoading }) {
   const contactForm = useRef();
   const submitBtn = useRef();
   const [isDisabled, setIsDisabled] = useState(true);
-  const { setDisplayAlert, setMessageToDisplay, okToHideNavBar } =
-    useContext(DisplayAlertContext);
+  const {
+    setDisplayAlert,
+    setMessageToDisplay,
+    okToHideNavBar,
+    formState,
+    dispatchFormState,
+  } = useContext(DisplayAlertContext);
   const navigate = useNavigate();
 
-  const formStates = {
-    userName: "",
-    userComment: "",
-    isNameValid: false,
-    isCommentValid: false,
-  };
-
-  const setFormStates = (formState, { type, payload }) => {
-    switch (type) {
-      case "updateUserName":
-        return { ...formState, userName: payload };
-      case "updateUserComment":
-        return { ...formState, userComment: payload };
-      case "isNameValid":
-        return { ...formState, isNameValid: payload };
-      case "isCommentValid":
-        return { ...formState, isCommentValid: payload };
-      default:
-        return formState;
-    }
-  };
-
-  const [formState, dispatchFormState] = useReducer(setFormStates, formStates);
+  useEffect(() => {
+    // resets the formState values upon re render of form
+    dispatchFormState({ type: "clearForm" });
+  }, []);
 
   useEffect(() => {
     if (formState.isNameValid && formState.isCommentValid) {
@@ -49,18 +35,22 @@ function ContactForm({ setIsLoading }) {
 
   const submitContactForm = async (e) => {
     e.preventDefault();
+
     if (!formState.isNameValid || !formState.isCommentValid) {
       return;
     }
     // this displays loading icon waiting for response
     setIsLoading(true);
-
     const userInput = {
       name: formState.userName,
       userMessage: sanitizeComment(formState.userComment),
     };
 
-    const CONTACT_ENDPOINT = "https://angry-slug-peplum.cyclic.app/contact";
+    // resets the formState values
+    dispatchFormState({ type: "clearForm" });
+
+    // const CONTACT_ENDPOINT = "https://angry-slug-peplum.cyclic.app/contact";
+    const CONTACT_ENDPOINT = "http://localhost:3500/contact/";
 
     try {
       const response = await fetch(CONTACT_ENDPOINT, {
