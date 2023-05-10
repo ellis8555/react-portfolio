@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import onBlurZeroInput from "../../../../utils/util-methods/onBlurZeroInput";
 import colors from "../../../../utils/colors";
-import CheckSvg from "./contact-form-svgs/CheckSvg";
-import ExclamationSvg from "./contact-form-svgs/ExclamationSvg";
+import CheckSvg from "../../../../utils/svgs/CheckSvg";
+import ExclamationSvg from "../../../../utils/svgs/ExclamationSvg";
 import useSetValidations from "../../../../hooks/useSetValidations";
 
 function CommentInput({ getUserComment, dispatchFormState }) {
