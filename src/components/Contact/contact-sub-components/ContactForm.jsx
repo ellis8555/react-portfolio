@@ -49,8 +49,7 @@ function ContactForm({ setIsLoading }) {
     // resets the formState values
     dispatchFormState({ type: "clearForm" });
 
-    // const CONTACT_ENDPOINT = "https://angry-slug-peplum.cyclic.app/contact";
-    const CONTACT_ENDPOINT = "http://localhost:3500/contact/";
+    const CONTACT_ENDPOINT = "https://angry-slug-peplum.cyclic.app/contact";
 
     try {
       const response = await fetch(CONTACT_ENDPOINT, {
