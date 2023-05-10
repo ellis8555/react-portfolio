@@ -31,7 +31,7 @@ function Home() {
             This portfolio has two seperate versions that are both connected to
             a single back end
           </p>
-          <p> - The first version was created out of vanilla javascript</p>
+          <p> - The first version was created using vanilla javascript</p>
           <p> - The second version (this site) is React</p>
         </div>
       </BodyContainer>
