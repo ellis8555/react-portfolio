@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function RightNav({ links }) {
+function RightNav({ links, isLoggedIn, username }) {
   return (
     <ul className="flex flex-col sm:gap-x-2 sm:flex-row sm:items-center">
       {links.map((link, index) => {
@@ -19,6 +19,12 @@ function RightNav({ links }) {
           </NavLink>
         ) : null;
       })}
+
+      {isLoggedIn && (
+        <div className="text-info pl-2 border-l-2 border-info pr-2">
+          {username}
+        </div>
+      )}
     </ul>
   );
 }
