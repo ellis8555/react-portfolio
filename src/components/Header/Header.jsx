@@ -7,7 +7,6 @@ import expandMenu from "../Nav/nav-methods/expandMenu";
 import { DisplayAlertContext } from "../../contexts/DisplayAlertContext";
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   // width needed for navbar hiding on scroll if not mobile
   const [documentWidth, setDocumentWidth] = useState(
     document.documentElement.offsetWidth
@@ -24,7 +23,8 @@ function Header() {
   const [isScrollingDown, setIsScrollingdown] = useState(false);
   // determines if navbar can be hidden on scroll down
   // const okToHideNavBar = useRef(false);
-  const { okToHideNavBar } = useContext(DisplayAlertContext);
+  const { okToHideNavBar, isLoggedIn, loggedInUser } =
+    useContext(DisplayAlertContext);
   const yPosRenderCount = useRef(0);
   // used to set yPos on second take and leave the first recorded yPos as is
   // otherwise same result duplicated
@@ -158,7 +158,11 @@ function Header() {
               }
             >
               <LeftNav links={links} />
-              <RightNav links={links} />
+              <RightNav
+                links={links}
+                isLoggedIn={isLoggedIn}
+                username={loggedInUser}
+              />
             </nav>
           )}
         </div>
