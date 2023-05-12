@@ -26,16 +26,6 @@ function Home() {
         </BodyContainer>
       )}
       <BodyContainer title="My React Portfolio">
-        <div className="py-2 h6">
-          <p>
-            This portfolio has two seperate versions that are both connected to
-            a single back end
-          </p>
-          <p> - The first version was created using vanilla javascript</p>
-          <p> - The second version (this site) is React</p>
-        </div>
-      </BodyContainer>
-      <BodyContainer>
         <Construction />
       </BodyContainer>
       <BodyContainer>
