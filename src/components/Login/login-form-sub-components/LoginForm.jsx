@@ -3,15 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { DisplayAlertContext } from "../../../contexts/DisplayAlertContext";
 import NameInput from "../../../utils/components/NameInput";
 import PasswordInput from "../../../utils/components/PasswordInput";
+import FormInputMessage from "../../../utils/components/FormInputMessage";
 import { sanitizeComment } from "../../../utils/util-methods/sanitizeTextInput";
 
 function LoginForm({ setIsLoading }) {
   const loginForm = useRef();
   const submitBtn = useRef();
-  const nameHelper = useRef();
-  const passwordHelper = useRef();
-  const loginHelper = useRef();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [loginHelper, setLoginHelper] = useState("");
+  const [passwordHelper, setPasswordHelper] = useState("");
+  const [nameHelper, setNameHelper] = useState("");
   const {
     setDisplayAlert,
     setMessageToDisplay,
@@ -100,13 +101,13 @@ function LoginForm({ setIsLoading }) {
           const fieldName = result.field;
           switch (fieldName) {
             case "username":
-              nameHelper.current.innerHTML = result.message;
+              setNameHelper(result.message);
               break;
             case "password":
-              passwordHelper.current.innerHTML = result.message;
+              setPasswordHelper(result.message);
               break;
             case "notFound":
-              loginHelper.current.innerHTML = result.message;
+              setLoginHelper(result.message);
               break;
             default:
               return;
@@ -121,10 +122,10 @@ function LoginForm({ setIsLoading }) {
           fieldListErrors.forEach((error) => {
             switch (error) {
               case "username":
-                loginHelper.current.innerHTML = result.message;
+                setLoginHelper(result.message);
                 break;
               case "password":
-                loginHelper.current.innerHTML = result.message;
+                setLoginHelper(result.message);
                 break;
             }
           });
@@ -153,14 +154,14 @@ function LoginForm({ setIsLoading }) {
       <NameInput
         getUserName={formState.userName}
         dispatchFormState={dispatchFormState}
+        serverMessage={nameHelper}
       />
-      <div className="text-danger mt-1" ref={nameHelper}></div>
       <br />
       <PasswordInput
         getPassword={formState.userPassword}
         dispatchFormState={dispatchFormState}
+        serverMessage={passwordHelper}
       />
-      <div className="text-danger mt-1" ref={passwordHelper}></div>
       <button
         ref={submitBtn}
         type="submit"
@@ -174,7 +175,7 @@ function LoginForm({ setIsLoading }) {
       >
         Submit
       </button>
-      <div ref={loginHelper} className="text-danger mt-2"></div>
+      <FormInputMessage message={loginHelper} />
     </form>
   );
 }
