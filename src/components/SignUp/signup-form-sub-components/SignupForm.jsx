@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { DisplayAlertContext } from "../../../contexts/DisplayAlertContext";
 import NameInput from "../../../utils/components/NameInput";
 import PasswordInput from "../../../utils/components/PasswordInput";
@@ -8,8 +8,8 @@ import { sanitizeComment } from "../../../utils/util-methods/sanitizeTextInput";
 function SignupForm({ setIsLoading }) {
   const signupForm = useRef();
   const submitBtn = useRef();
-  const nameHelper = useRef();
-  const passwordHelper = useRef();
+  const [passwordHelper, setPasswordHelper] = useState("");
+  const [nameHelper, setNameHelper] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const {
     setDisplayAlert,
@@ -52,8 +52,8 @@ function SignupForm({ setIsLoading }) {
       password: sanitizeComment(formState.userPassword),
     };
 
-    const SIGNUP_ENDPOINT =
-      "https://angry-slug-peplum.cyclic.app/user/register";
+    // const SIGNUP_ENDPOINT =
+    ("https://angry-slug-peplum.cyclic.app/user/register");
 
     try {
       const response = await fetch(SIGNUP_ENDPOINT, {
@@ -100,13 +100,13 @@ function SignupForm({ setIsLoading }) {
           const fieldName = result.field;
           switch (fieldName) {
             case "username":
-              nameHelper.current.innerHTML = result.message;
+              setNameHelper(result.message);
               break;
             case "password":
-              passwordHelper.current.innerHTML = result.message;
+              setPasswordHelper(result.message);
               break;
             case "duplicate":
-              nameHelper.current.innerHTML = result.message;
+              setNameHelper(result.message);
               break;
             default:
               return;
@@ -121,10 +121,10 @@ function SignupForm({ setIsLoading }) {
           fieldListErrors.forEach((error) => {
             switch (error) {
               case "username":
-                passwordHelper.current.innerHTML = result.message;
+                setPasswordHelper(result.message);
                 break;
               case "password":
-                passwordHelper.current.innerHTML = result.message;
+                setPasswordHelper(result.message);
                 break;
             }
           });
@@ -153,14 +153,14 @@ function SignupForm({ setIsLoading }) {
       <NameInput
         getUserName={formState.userName}
         dispatchFormState={dispatchFormState}
+        serverMessage={nameHelper}
       />
-      <div className="text-danger mt-1" ref={nameHelper}></div>
       <br />
       <PasswordInput
         getPassword={formState.userPassword}
         dispatchFormState={dispatchFormState}
+        serverMessage={passwordHelper}
       />
-      <div className="text-danger mt-1" ref={passwordHelper}></div>
       <button
         ref={submitBtn}
         type="submit"
