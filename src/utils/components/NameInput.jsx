@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import onBlurZeroInput from "../util-methods/onBlurZeroInput";
 import colors from "../colors";
 import CheckSvg from "../svgs/CheckSvg";
 import ExclamationSvg from "../svgs/ExclamationSvg";
 import useSetValidations from "../../hooks/useSetValidations";
+import FormInputMessage from "./FormInputMessage";
 
-function NameInput({ getUserName, dispatchFormState }) {
+function NameInput({ getUserName, dispatchFormState, serverMessage }) {
   const [valid, setValid] = useState(false);
   const nameInputRef = useRef();
   const nameHelpRef = useRef();
@@ -80,9 +81,10 @@ function NameInput({ getUserName, dispatchFormState }) {
               : "Between 2-30 characters, alpha only with one space in between permitted"}
           </p>
         </div>
+        <FormInputMessage message={serverMessage} />
       </div>
     </>
   );
 }
 
-export default NameInput;
+export default React.memo(NameInput);
