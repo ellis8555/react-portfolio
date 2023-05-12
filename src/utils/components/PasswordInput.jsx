@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import onBlurZeroInput from "../util-methods/onBlurZeroInput";
 import colors from "../colors";
 import CheckSvg from "../svgs/CheckSvg";
 import ExclamationSvg from "../svgs/ExclamationSvg";
 import useSetValidations from "../../hooks/useSetValidations";
+import FormInputMessage from "./FormInputMessage";
 
-function PasswordInput({ getPassword, dispatchFormState }) {
+function PasswordInput({ getPassword, dispatchFormState, serverMessage }) {
   const [valid, setValid] = useState(false);
   const passwordInputRef = useRef();
   const passwordHelpRef = useRef();
@@ -80,9 +81,10 @@ function PasswordInput({ getPassword, dispatchFormState }) {
               : "8 characters required with one of (upper, lower, number, special)"}
           </p>
         </div>
+        <FormInputMessage message={serverMessage} />
       </div>
     </>
   );
 }
 
-export default PasswordInput;
+export default React.memo(PasswordInput);
