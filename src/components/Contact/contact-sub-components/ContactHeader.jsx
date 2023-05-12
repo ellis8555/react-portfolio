@@ -8,7 +8,7 @@ function ContactHeader() {
           <span>
             <Mail />
           </span>
-          lsp1@hotmail
+          ellis8555@gmail.com
         </p>
       </div>
       <div>
