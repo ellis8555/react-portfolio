@@ -4,6 +4,12 @@
   transform: scale(1.25) translate(-2rem, 0);
 }
 
+#gmailAddress:before {
+  position: absolute;
+  content: url(/images/about-me/gmail.png);
+  transform: scale(1.5) translate(-2rem, 0);
+}
+
 textarea::placeholder {
   color: hsl(215, 16%, 47%);
 }
