@@ -4,10 +4,10 @@ function ContactHeader() {
   return (
     <div className=" text-center rounded-md w-full py-3 flex flex-col gap-4 md:flex-row md:justify-around">
       <div>
-        <p className="relative w-fit m-auto text-info font-bold text-xl">
-          <span>
-            <Mail />
-          </span>
+        <p
+          id="gmailAddress"
+          className="relative w-fit m-auto text-info font-bold text-xl"
+        >
           ellis8555@gmail.com
         </p>
       </div>
