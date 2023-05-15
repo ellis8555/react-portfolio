@@ -7,7 +7,7 @@ function Construction() {
   return (
     <div className="w-full bg-construction-25 text-center my-6 pt-6 pb-6 overflow-hidden md:mx-8 md:rounded-md">
       <p className="text-underConstructionTextColor pb-6 h4">
-        Contact & Auth functioning. More content to be added yet
+        Site under construction
       </p>
       <a
         href="https://ellis8555.github.io/CertificatesOnGit"
