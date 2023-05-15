@@ -67,7 +67,7 @@ function CommentInput({ getUserComment, dispatchFormState }) {
                   colors.TEXT_UNSELECTED
                 );
               }}
-              placeholder="Drop me a comment or leave some feedback"
+              placeholder="Email me a comment or leave some feedback here"
               rows="10"
             ></textarea>
             {!isEmpty ? (
