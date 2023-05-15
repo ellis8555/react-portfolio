@@ -4,6 +4,7 @@ import { DisplayAlertContext } from "../../../contexts/DisplayAlertContext";
 import NameInput from "../../../utils/components/NameInput";
 import CommentInput from "./contact-form-sub-components/CommentInput";
 import { sanitizeComment } from "../../../utils/util-methods/sanitizeTextInput";
+import { useSendMail, createEmail } from "../../../hooks/useSendMail";
 
 function ContactForm({ setIsLoading }) {
   const contactForm = useRef();
@@ -63,6 +64,11 @@ function ContactForm({ setIsLoading }) {
       const result = await response.json();
 
       if (response.ok) {
+        // send comment to admins email address
+        useSendMail(
+          createEmail(formState.userName, formState.userComment),
+          formState.userName
+        );
         // this is message that will display for three seconds after successful form submission
         setMessageToDisplay(`${result.name} your message has been submitted!`);
         // this activates the message to user form has been submitted on home element
