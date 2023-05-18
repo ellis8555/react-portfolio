@@ -37,6 +37,10 @@ function useProjectLogos() {
           src: "/images/hobbies/web-dev/bootstrap.png",
           alt: "bootstrap",
         },
+        {
+          src: "/images/hobbies/web-dev/jest.webp",
+          alt: "jest",
+        },
       ],
       href: "https://github.com/ellis8555/CertificatesOnGit/tree/src-branch",
       title: "Vanilla versions github",
