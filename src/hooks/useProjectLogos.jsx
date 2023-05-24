@@ -42,7 +42,7 @@ function useProjectLogos() {
           alt: "jest",
         },
       ],
-      href: "https://github.com/ellis8555/CertificatesOnGit/tree/src-branch",
+      href: "https://github.com/ellis8555/portfolio",
       title: "Vanilla versions github",
       end: "Front-end",
     },
