@@ -53,7 +53,7 @@ function SignupForm({ setIsLoading }) {
     };
 
     // const SIGNUP_ENDPOINT =
-    ("https://angry-slug-peplum.cyclic.app/user/register");
+    ("https://portfolio-backend-tawny.vercel.app/user/register");
 
     try {
       const response = await fetch(SIGNUP_ENDPOINT, {

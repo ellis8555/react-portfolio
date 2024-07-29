@@ -54,7 +54,7 @@ function LoginForm({ setIsLoading }) {
       password: sanitizeComment(formState.userPassword),
     };
 
-    const SIGNUP_ENDPOINT = "https://angry-slug-peplum.cyclic.app/user/login";
+    const SIGNUP_ENDPOINT = "https://portfolio-backend-tawny.vercel.app/user/login";
 
     try {
       const response = await fetch(SIGNUP_ENDPOINT, {
